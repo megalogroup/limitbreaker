@@ -2459,17 +2459,10 @@ function setDBF(m){dbF=m;renderDBFilter();renderDBList()}
 function kanaToHira(s){return s.replace(/[ァ-ヶ]/g,c=>String.fromCharCode(c.charCodeAt(0)-0x60)).replace(/[Ａ-Ｚａ-ｚ]/g,c=>String.fromCharCode(c.charCodeAt(0)-0xFEE0)).toLowerCase();}
 function renderDBList(){
   const raw=!dbF?masterDB:masterDB.filter(e=>e.m===dbF);
-  const muscleOrder=['Chest','Back','Legs','Shoulder','Arms','Core'];
+  const muscleOrder=['Chest','Back','Shoulder','Arms','Legs','Core'];
   function charCat(c){const cp=c.codePointAt(0);if(cp>=0x21&&cp<=0x7E){if(cp>=0x30&&cp<=0x39)return 1;if((cp>=0x41&&cp<=0x5A)||(cp>=0x61&&cp<=0x7A))return 2;return 0;}if(cp>=0xFF01&&cp<=0xFF5E){const h=cp-0xFEE0;if(h>=0x30&&h<=0x39)return 1;if((h>=0x41&&h<=0x5A)||(h>=0x61&&h<=0x7A))return 2;return 0;}if((cp>=0x3041&&cp<=0x3096)||(cp>=0x30A1&&cp<=0x30F6))return 3;if(cp>=0x4E00&&cp<=0x9FFF)return 4;return 5;}
   function exSortKey(name){const cat=charCat(name[0]||'\u9999');return String(cat)+'|'+kanaToHira(name);}
-  const f=[...raw].sort((a,b)=>{
-    const ma=muscleOrder.indexOf(a.m),mb=muscleOrder.indexOf(b.m);
-    const mdiff=(ma===-1?999:ma)-(mb===-1?999:mb);
-    if(mdiff!==0)return mdiff;
-    const ka=exSortKey(a.n),kb=exSortKey(b.n);
-    if(ka[0]!==kb[0])return ka[0]<kb[0]?-1:1;
-    return kanaToHira(a.n).localeCompare(kanaToHira(b.n),'ja',{sensitivity:'base',numeric:true});
-  });
+  const f=[...raw].sort((a,b)=>kanaToHira(a.n).localeCompare(kanaToHira(b.n),'ja',{sensitivity:'base',numeric:true}));
   document.getElementById('db-list').innerHTML=f.map(ex=>{
     const restDisp=ex.isometric?(ex.restSec>=60?`${Math.floor(ex.restSec/60)}分${ex.restSec%60?ex.restSec%60+'秒':''}`:ex.restSec+'秒'):(ex.restSec+'s');
     const equipTag=ex.equip&&ex.equip!=='none'?`<span style="font-size:17px;background:rgba(59,139,212,.12);color:var(--bl);border:0.5px solid rgba(59,139,212,.3);border-radius:3px;padding:1px 4px;margin-left:3px">${ex.equip==='barbell'?'BB':'DB'}</span>`:''
