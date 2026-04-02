@@ -788,6 +788,16 @@ html,body{height:100dvh;overflow:hidden;background:var(--bg);color:var(--te);fon
   </div>
 </div>
 
+<!-- DELETE EXERCISE CONFIRM MODAL -->
+<div class="bottom-pop" id="del-ex-confirm-modal">
+  <div class="bp-box">
+    <div class="bp-handle"></div>
+    <div style="font-family:var(--fd);font-size:15px;letter-spacing:1.5px;color:var(--te);margin-bottom:12px">この種目を削除しますか？</div>
+    <button id="del-ex-confirm-btn" onclick="confirmDelSessEx()" style="width:100%;padding:10px;background:rgba(232,89,60,.16);border:0.5px solid rgba(232,89,60,.5);border-radius:8px;font-family:var(--fd);font-size:16px;letter-spacing:1px;color:rgba(232,89,60,.95);cursor:pointer;margin-bottom:6px">削除する</button>
+    <button onclick="closeModal('del-ex-confirm-modal')" style="width:100%;padding:10px;background:var(--bg3);border:0.5px solid var(--b2);border-radius:8px;font-family:var(--fd);font-size:15px;letter-spacing:1px;color:var(--t2);cursor:pointer">キャンセル</button>
+  </div>
+</div>
+
 <!-- QAE (add ex to session) -->
 <div class="ex-sel-pop" id="qae-pop">
   <div class="esp-box">
@@ -1314,15 +1324,23 @@ function updateSet(i,key,val){
 
 function goSEx(dir){if(!session)return;session.idx=Math.max(0,Math.min(session.exs.length-1,session.idx+dir));renderSession()}
 function goSExTo(i){if(!session)return;session.idx=i;renderSession()}
+function performSessExDelete(){
+  if(!session)return;
+  session.exs.splice(session.idx,1);
+  session.idx=Math.min(session.idx,session.exs.length-1);
+  renderSession();
+}
 function delSessEx(){
   if(!session)return;
   if(session.exs.length<=1){alert('最後の種目は削除できません');return;}
   const curEx=session.exs[session.idx];
   const hasInput=!!(curEx?.sets||[]).some(set=>parseInt(set?.reps||0)>0);
-  if(hasInput&&!confirm("入力済みのセットがあります。種目を削除しますか？"))return;
-  session.exs.splice(session.idx,1);
-  session.idx=Math.min(session.idx,session.exs.length-1);
-  renderSession();
+  if(hasInput){openModal('del-ex-confirm-modal');return;}
+  performSessExDelete();
+}
+function confirmDelSessEx(){
+  closeModal('del-ex-confirm-modal');
+  performSessExDelete();
 }
 function addSessSet(){
   if(!session)return;
