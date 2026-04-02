@@ -121,7 +121,7 @@ html,body{height:100dvh;overflow:hidden;background:var(--bg);color:var(--te);fon
 .ex-nb:disabled{opacity:.2;cursor:not-allowed}
 .ex-name-big{font-family:var(--fd);font-size:30px;letter-spacing:1.5px;color:var(--te);flex:1;white-space:normal;overflow:visible;word-break:break-all;text-align:center;line-height:1.1}
 .ex-cnt{font-size:14px;color:var(--t3);flex-shrink:0;min-width:24px;text-align:right}
-.rest-row{display:flex;align-items:center;gap:4px;margin-bottom:7px}
+.rest-row{display:flex;align-items:center;gap:0;margin-bottom:7px}
 .rest-blk{background:var(--bg3);border:0.5px solid var(--b2);border-radius:7px;padding:5px 7px;display:flex;align-items:center;gap:4px;flex:1}
 .rlbl{font-size:17px;color:var(--t3);text-transform:uppercase;letter-spacing:.8px;white-space:nowrap}
 .rval{font-family:var(--fd);font-size:23px;color:var(--bl);line-height:1;min-width:26px;text-align:center}
@@ -461,10 +461,6 @@ html,body{height:100dvh;overflow:hidden;background:var(--bg);color:var(--te);fon
       <button class="ex-nb" id="sess-next" onclick="goSEx(1)">›</button>
       <div class="ex-cnt" id="sess-ex-cnt">1/1</div>
     </div>
-    <div class="ex-act-row">
-      <button class="ex-act-btn" onclick="delSessEx()" style="background:var(--bg3);border:0.5px solid var(--b2);color:rgba(232,89,60,0.7)">✕ 種目削除</button>
-      <button class="ex-act-btn addexq" onclick="openQae()"><span style="font-size:15px;line-height:1">＋</span>種目追加</button>
-    </div>
     <div class="rest-row">
       <div style="flex:1">
         <div class="rest-blk">
@@ -482,6 +478,10 @@ html,body{height:100dvh;overflow:hidden;background:var(--bg);color:var(--te);fon
             <button style="font-size:12px;padding:2px 8px;background:var(--bg3);border:0.5px solid var(--b2);border-radius:5px;color:var(--t2);cursor:pointer" onclick="stopInlineTimer()">SKIP</button>
           </div>
         </div>
+      </div>
+      <div style="display:flex;gap:0;align-items:center;flex-shrink:0;margin-left:16px">
+        <button class="ex-act-btn" onclick="delSessEx()" style="background:var(--bg3);border:0.5px solid var(--b2);color:rgba(232,89,60,0.7)">✕ 種目削除</button>
+        <button class="ex-act-btn addexq" onclick="openQae()"><span style="font-size:15px;line-height:1">＋</span>種目追加</button>
       </div>
     </div>
     <div id="sess-ex-area"></div>
