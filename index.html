@@ -803,6 +803,16 @@ html,body{height:100dvh;overflow:hidden;background:var(--bg);color:var(--te);fon
   </div>
 </div>
 
+<!-- DELETE EXERCISE CONFIRM MODAL -->
+<div class="bottom-pop" id="del-ex-confirm-modal">
+  <div class="bp-box">
+    <div class="bp-handle"></div>
+    <div style="font-family:var(--fd);font-size:18px;letter-spacing:1.2px;color:var(--te);margin-bottom:12px;text-align:center">この種目を削除しますか？</div>
+    <button id="del-ex-confirm-btn" style="width:100%;padding:9px;background:var(--acd);border:0.5px solid rgba(232,89,60,.45);border-radius:7px;font-family:var(--fd);font-size:17px;letter-spacing:1px;color:var(--ac);cursor:pointer;margin-bottom:6px">削除する</button>
+    <button onclick="closeModal('del-ex-confirm-modal')" style="width:100%;padding:9px;background:var(--bg3);border:0.5px solid var(--b2);border-radius:7px;font-family:var(--fd);font-size:16px;letter-spacing:1px;color:var(--t2);cursor:pointer">キャンセル</button>
+  </div>
+</div>
+
 <!-- TIMER -->
 <div class="timer-ov" id="timer-ov">
   <div class="tbox">
@@ -1127,6 +1137,7 @@ function startFreeSession(){
 }
 // Modify esp-close to start session
 document.getElementById('esp-close').onclick=()=>{if(sessExercises.length>0)startFreeSession();else closeModal('ex-sel-pop')};
+document.getElementById("del-ex-confirm-btn").onclick=()=>{closeModal("del-ex-confirm-modal");removeCurrentSessEx();};
 document.getElementById('esp-title').textContent='種目を選択';
 
 /* ═══ ROUTINE MODAL ═══ */
@@ -1179,7 +1190,7 @@ function renderSessEx(){
         <div class="ex-name-big" style="font-size:14px;text-align:left;flex:1">${ex.n}</div>
         <span style="font-size:13px;color:var(--t3)">${ex.sets.length} sets</span>
       </div>
-      <div class="shead3"><div class="sh">SET</div><div class="sh">${settings.unit==='lb'?'LBS':'KG'}</div><div class="sh" style="font-size:11px;color:${exEquip!=='none'?'var(--bl)':'var(--b2)'}">TOT</div><div class="sh">REP</div><div class="sh" style="font-size:9px;letter-spacing:0">チート</div><div class="sh" style="font-size:9px;letter-spacing:0">補助</div><div></div></div>
+      <div class="shead3"><div class="sh">SET</div><div class="sh">${settings.unit==="lb"?"LBS":"KG"}<div style="font-size:9px;line-height:1;color:var(--t3);margin-top:1px">${exEquip==="barbell"?"プレート":exEquip==="dumbbell"?"片側":""}</div></div><div class="sh" style="font-size:11px;color:${exEquip!=="none"?"var(--bl)":"var(--b2)"}">${exEquip!=="none"?"総重量<div style=\"font-size:9px;line-height:1;color:var(--t3);margin-top:1px\">バー含む</div>":"—"}</div><div class="sh">REP</div><div class="sh" style="font-size:9px;letter-spacing:0">チート</div><div class="sh" style="font-size:9px;letter-spacing:0">補助</div><div></div></div>
       <div id="setrows"></div>
       <button class="addsb" onclick="addSessSet()" style="padding:5px;height:32px">＋ セット追加</button>
     </div>
@@ -1314,12 +1325,19 @@ function updateSet(i,key,val){
 
 function goSEx(dir){if(!session)return;session.idx=Math.max(0,Math.min(session.exs.length-1,session.idx+dir));renderSession()}
 function goSExTo(i){if(!session)return;session.idx=i;renderSession()}
-function delSessEx(){
+function removeCurrentSessEx(){
   if(!session)return;
-  if(session.exs.length<=1){alert('最後の種目は削除できません');return;}
   session.exs.splice(session.idx,1);
   session.idx=Math.min(session.idx,session.exs.length-1);
   renderSession();
+}
+function delSessEx(){
+  if(!session)return;
+  if(session.exs.length<=1){alert('最後の種目は削除できません');return;}
+  const curEx=session.exs[session.idx];
+  const hasInput=!!(curEx?.sets||[]).some(set=>parseInt(set?.reps||0)>0);
+  if(hasInput){openModal('del-ex-confirm-modal');return;}
+  removeCurrentSessEx();
 }
 function addSessSet(){
   if(!session)return;
@@ -1425,9 +1443,18 @@ function saveAndGoHome(){
 }
 
 /* ═══ INLINE TIMER ═══ */
+let _audioCtx=null;
+function getAudioCtx(){
+  const AC=window.AudioContext||window.webkitAudioContext;
+  if(!AC)throw new Error("AudioContext not supported");
+  if(!_audioCtx)_audioCtx=new AC();
+  if(_audioCtx.state==="suspended")_audioCtx.resume();
+  return _audioCtx;
+}
 let inlineTimerI=null,inlineTimerCur=0,inlineTimerTot=0,inlineTimerRunning=false;
 function toggleInlineTimer(){
   if(inlineTimerRunning||inlineTimerCur>0){stopInlineTimer();return;}
+  try{getAudioCtx();}catch(e){}
   inlineTimerCur=restSec;inlineTimerTot=restSec;inlineTimerRunning=true;
   const bar=document.getElementById('rest-timer-bar');
   const info=document.getElementById('rest-timer-info');
@@ -1473,7 +1500,7 @@ function setTimerSound(id){settings.timerSound=id;S.set('settings',settings);ren
 
 function playAlarm(){
   const sound=settings.timerSound||'beep';
-  if(sound==='off'){if(navigator.vibrate)navigator.vibrate([200,100,200]);return;}
+  if(sound==='off'){if(navigator.vibrate)navigator.vibrate([200,100,200,100,400]);return;}
   if(sound!=='beep'){
     try{
       // やる気を喚起するフレーズ（複数からランダム）
@@ -1511,19 +1538,23 @@ function playAlarm(){
     return;
   }
   try{
-    const ctx=new(window.AudioContext||window.webkitAudioContext)();
-    const beep=(freq,start,dur)=>{
-      const o=ctx.createOscillator();const g=ctx.createGain();
-      o.connect(g);g.connect(ctx.destination);
-      o.frequency.value=freq;o.type='sine';
-      g.gain.setValueAtTime(0,ctx.currentTime+start);
-      g.gain.linearRampToValueAtTime(0.4,ctx.currentTime+start+0.01);
-      g.gain.linearRampToValueAtTime(0,ctx.currentTime+start+dur);
-      o.start(ctx.currentTime+start);o.stop(ctx.currentTime+start+dur+0.05);
+    const ctx=getAudioCtx();
+    const playBeepSet=(offset=0)=>{
+      const beep=(freq,start,dur)=>{
+        const o=ctx.createOscillator();const g=ctx.createGain();
+        o.connect(g);g.connect(ctx.destination);
+        o.frequency.value=freq;o.type="sine";
+        g.gain.setValueAtTime(0,ctx.currentTime+offset+start);
+        g.gain.linearRampToValueAtTime(0.4,ctx.currentTime+offset+start+0.01);
+        g.gain.linearRampToValueAtTime(0,ctx.currentTime+offset+start+dur);
+        o.start(ctx.currentTime+offset+start);o.stop(ctx.currentTime+offset+start+dur+0.05);
+      };
+      beep(880,0,0.12);beep(1100,0.15,0.12);beep(1320,0.30,0.20);
     };
-    beep(880,0,0.12);beep(1100,0.15,0.12);beep(1320,0.30,0.20);
+    playBeepSet(0);
+    setTimeout(()=>{try{playBeepSet(0);}catch(e){}},800);
   }catch(e){}
-  if(navigator.vibrate)navigator.vibrate([100,50,100,50,200]);
+  if(navigator.vibrate)navigator.vibrate([200,100,200,100,400]);
 }
 function updateRing(c,tot){const r=document.getElementById('tring');if(r){r.style.strokeDashoffset=251*(1-c/tot);r.style.stroke=c<20?'#E8593C':'#3B8BD4';}}
 
