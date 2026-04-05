@@ -62,7 +62,6 @@ html,body{height:100dvh;overflow:hidden;background:var(--bg);color:var(--te);fon
 .goal-card:active{opacity:.88}
 .goal-text{font-family:var(--fd);font-size:14px;letter-spacing:1px;color:var(--gr);line-height:1.4;word-break:break-all}
 .goal-placeholder{font-size:24px;color:var(--t3);letter-spacing:.5px}
-.goal-edit-hint{position:absolute;top:4px;right:7px;font-size:17px;color:rgba(76,175,80,.4);letter-spacing:.5px}
 .goal-input{width:100%;background:transparent;border:none;outline:none;font-family:var(--fd);font-size:14px;letter-spacing:1px;color:var(--gr);text-align:center;resize:none;line-height:1.4}
 .date-hero{background:linear-gradient(180deg,#1a0808 0%,#0a0a0a 100%);padding:14px 14px 12px;border-bottom:0.5px solid var(--b)}
 .date-today{font-size:30px;color:var(--t3);text-transform:uppercase;letter-spacing:2px;margin-bottom:4px;font-size:24px;letter-spacing:2px;color:var(--te);line-height:1;margin-bottom:0}
@@ -102,31 +101,32 @@ html,body{height:100dvh;overflow:hidden;background:var(--bg);color:var(--te);fon
 .sk-l{font-size:17px;color:var(--t3);text-transform:uppercase}
 
 /* ═══ SESSION ═══ */
-.sess-top{position:sticky;top:0;z-index:10;background:rgba(10,10,10,.98);border-bottom:0.5px solid var(--b);padding:6px 12px}
-.sess-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:5px}
-.sess-end{padding:8px 10px;height:auto;background:var(--grd);border:0.5px solid rgba(76,175,80,.5);border-radius:6px;font-family:var(--fd);font-size:21px;letter-spacing:1px;color:var(--gr);cursor:pointer;white-space:normal}
-.sess-cancel{padding:8px 10px;height:auto;background:transparent;border:0.5px solid rgba(232,89,60,0.6);border-radius:6px;font-family:var(--fd);font-size:21px;letter-spacing:1px;color:rgba(232,89,60,0.85);cursor:pointer;white-space:normal}
+.sess-top{position:sticky;top:0;z-index:10;background:rgba(10,10,10,.98);border-bottom:0.5px solid var(--b);padding:4px 12px}
+.sess-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:3px}
+.sess-end{padding:5px 8px;height:auto;background:var(--grd);border:0.5px solid rgba(76,175,80,.5);border-radius:6px;font-family:var(--fd);font-size:14px;letter-spacing:1px;color:var(--gr);cursor:pointer;white-space:normal}
+.sess-cancel{padding:5px 8px;height:auto;background:transparent;border:0.5px solid rgba(232,89,60,0.6);border-radius:6px;font-family:var(--fd);font-size:14px;letter-spacing:1px;color:rgba(232,89,60,0.85);cursor:pointer;white-space:normal}
 .sess-cancel:active{background:var(--bg3)}
-.sess-name{font-family:var(--fd);font-size:30px;letter-spacing:1.5px;color:var(--te)}
-.sess-elapsed{font-size:30px;color:var(--t3)}
+.sess-name{font-family:var(--fd);font-size:16px;letter-spacing:1px;color:var(--te)}
+.sess-elapsed{font-size:13px;color:var(--t3)}
 .ex-pips{display:flex;gap:2px}
 .ex-pip{flex:1;height:3px;background:var(--b2);border-radius:2px;cursor:pointer}
 .ex-pip.done{background:var(--gr)}
 .ex-pip.cur{background:var(--ac)}
-.sess-body{padding:7px 12px}
-.ex-nav{display:flex;align-items:center;gap:5px;margin-bottom:7px}
+.sess-body{padding:7px 12px 0;display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden}
+.ex-nav{display:flex;align-items:center;gap:5px;margin-bottom:7px;flex-shrink:0}
 .ex-act-row{display:flex;gap:6px;margin-bottom:7px}
-.ex-act-btn{flex:1;height:32px;padding:5px 10px;border-radius:5px;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:3px;white-space:nowrap}
+.ex-act-btn{flex:1;height:36px;padding:5px 10px;border-radius:5px;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:3px;white-space:nowrap}
 .ex-nb{width:26px;height:26px;background:var(--bg3);border:0.5px solid var(--b2);border-radius:6px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--t2);font-size:14px;flex-shrink:0}
 .ex-nb:disabled{opacity:.2;cursor:not-allowed}
-.ex-name-big{font-family:var(--fd);font-size:30px;letter-spacing:1.5px;color:var(--te);flex:1;white-space:normal;overflow:visible;word-break:break-all;text-align:center;line-height:1.1}
+.ex-name-big{font-family:var(--fd);font-size:30px;letter-spacing:1.5px;color:var(--te);flex:1;white-space:nowrap;overflow:hidden;text-align:center;line-height:1.1;height:1.1em;display:flex;align-items:center;justify-content:center}
 .ex-cnt{font-size:14px;color:var(--t3);flex-shrink:0;min-width:24px;text-align:right}
-.rest-row{display:flex;align-items:stretch;gap:0;margin-bottom:7px}
+/* REST行 → 下部固定バー */
+.rest-row{display:flex;align-items:stretch;gap:6px;flex-shrink:0;padding:8px 12px;border-top:0.5px solid var(--b);background:rgba(10,10,10,.98);padding-bottom:max(8px,env(safe-area-inset-bottom))}
 .rest-blk{background:var(--bg3);border:0.5px solid var(--b2);border-radius:7px;padding:5px 7px;display:flex;align-items:center;gap:4px;flex:1;align-self:stretch}
-.rlbl{font-size:17px;color:var(--t3);text-transform:uppercase;letter-spacing:.8px;white-space:nowrap}
-.rval{font-family:var(--fd);font-size:23px;color:var(--bl);line-height:1;min-width:26px;text-align:center}
-.radj{width:32px;height:32px;background:var(--bg4);border:0.5px solid var(--b2);border-radius:6px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--t2);font-size:22px;flex-shrink:0;user-select:none}
-.rgo{background:var(--bl);border:none;border-radius:8px;padding:7px 18px;color:#fff;font-family:var(--fd);font-size:22px;letter-spacing:2px;cursor:pointer;flex-shrink:0;font-weight:700}
+.rlbl{font-size:14px;color:var(--t3);text-transform:uppercase;letter-spacing:.8px;white-space:nowrap}
+.rval{font-family:var(--fd);font-size:20px;color:var(--bl);line-height:1;min-width:26px;text-align:center}
+.radj{width:30px;height:30px;background:var(--bg4);border:0.5px solid var(--b2);border-radius:6px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--t2);font-size:20px;flex-shrink:0;user-select:none}
+.rgo{background:var(--bl);border:none;border-radius:8px;padding:5px 14px;color:#fff;font-family:var(--fd);font-size:18px;letter-spacing:2px;cursor:pointer;flex-shrink:0;font-weight:700}
 .rgo:active{opacity:.8}
 .addexq{background:var(--god);border:0.5px solid rgba(242,166,35,.4);color:var(--go)}
 .rest-row .ex-act-btn,.rest-row .addexq{align-self:stretch;height:auto}
@@ -136,22 +136,22 @@ html,body{height:100dvh;overflow:hidden;background:var(--bg);color:var(--te);fon
 .rest-timer-fill{height:100%;background:var(--bl);border-radius:2px;transition:width 1s linear}
 .rest-timer-info{display:none;align-items:center;justify-content:space-between;margin-top:3px}
 .rest-timer-info.show{display:flex}
-.excard{background:linear-gradient(135deg,#1a1010,#111);border:0.5px solid rgba(232,89,60,.35);border-radius:11px;padding:9px;margin-bottom:6px}
+.excard{background:linear-gradient(135deg,#1a1010,#111);border:0.5px solid rgba(232,89,60,.35);border-radius:11px;padding:9px;margin-bottom:6px;display:flex;flex-direction:column;flex:1;min-height:0}
 /* set grid: SET | KG | TOTAL | REPS | Cheat | Assist | Del */
-.shead3{display:grid;grid-template-columns:16px 1fr 38px 1fr 1fr 1fr 22px;gap:2px;align-items:center;margin-bottom:2px}
-.srow3{display:grid;grid-template-columns:16px 1fr 38px 1fr 1fr 1fr 22px;gap:2px;align-items:center;margin-bottom:2px}
-#setrows{max-height:38vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.shead3{display:grid;grid-template-columns:24px 1.2fr 1.2fr 1fr 1fr 1fr 28px;gap:3px;align-items:center;margin-bottom:2px;flex-shrink:0}
+.srow3{display:grid;grid-template-columns:24px 1.2fr 1.2fr 1fr 1fr 1fr 28px;gap:3px;align-items:stretch;margin-bottom:4px}
+#setrows{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch}
 .srow3-note{margin-top:1px;margin-bottom:4px;padding-left:2px}
-.sh{font-size:17px;color:var(--t3);text-transform:uppercase;letter-spacing:.8px;text-align:center}
-.sn{font-family:var(--fd);font-size:24px;color:var(--t3);text-align:center}
-.si{background:var(--bg4);border:0.5px solid var(--b2);border-radius:4px;padding:4px 2px;font-family:var(--fd);font-size:22px;color:var(--te);text-align:center;width:100%;-moz-appearance:textfield}
-.si.si-kg{font-size:22px}
+.sh{font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;text-align:center}
+.sn{font-family:var(--fd);font-size:13px;color:var(--t3);text-align:center}
+.si{background:var(--bg4);border:0.5px solid var(--b2);border-radius:4px;padding:4px 2px;font-family:var(--fd);font-size:18px;color:var(--te);text-align:center;width:100%;-moz-appearance:textfield}
+.si.si-kg{font-size:18px}
 .si:focus{outline:none;border-color:var(--ac);background:var(--bg3)}
 .si::-webkit-inner-spin-button,.si::-webkit-outer-spin-button{-webkit-appearance:none}
 .sinote{background:var(--bg4);border:0.5px solid var(--b2);border-radius:4px;padding:4px 3px;font-size:14px;color:var(--t2);width:100%;outline:none}
 .sinote:focus{border-color:var(--bl)}
 .sinote::placeholder{color:var(--t3)}
-.addsb{width:100%;padding:4px;background:none;border:0.5px dashed var(--b2);border-radius:5px;color:var(--t3);font-size:14px;cursor:pointer;margin-top:3px;display:flex;align-items:center;justify-content:center;gap:3px}
+.addsb{width:100%;padding:4px;background:none;border:0.5px dashed var(--b2);border-radius:5px;color:var(--t3);font-size:14px;cursor:pointer;margin-top:3px;display:flex;align-items:center;justify-content:center;gap:3px;flex-shrink:0}
 .scheat{display:flex;align-items:center;justify-content:center}
 .scheat input[type=checkbox]{width:16px;height:16px;accent-color:var(--go);cursor:pointer;flex-shrink:0}
 .scheat input[type=checkbox]:checked+span{color:var(--go)}
@@ -276,10 +276,10 @@ html,body{height:100dvh;overflow:hidden;background:var(--bg);color:var(--te);fon
 .dbedel{font-size:30px;color:rgba(232,89,60,.4);cursor:pointer;flex-shrink:0}
 .addar{background:var(--bg2);border-top:0.5px solid var(--b2);padding:8px 12px 6px;flex-shrink:0}
 .arl{font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:1px}
-.ainp{width:100%;background:var(--bg4);border:0.5px solid var(--b2);border-radius:5px;padding:5px 6px;color:var(--te);font-family:var(--fb);font-size:24px;outline:none}
+.ainp{width:100%;background:var(--bg4);border:0.5px solid var(--b2);border-radius:5px;padding:7px 8px;color:var(--te);font-family:var(--fb);font-size:18px;outline:none;box-sizing:border-box}
 .ainp:focus{border-color:var(--ac)}
 .ainp::placeholder{color:var(--t3)}
-.ainum{width:100%;background:var(--bg4);border:0.5px solid var(--b2);border-radius:5px;padding:6px 7px;color:var(--te);font-family:var(--fb);font-size:15px;line-height:1;outline:none;-moz-appearance:textfield;box-sizing:border-box}
+.ainum{width:100%;background:var(--bg4);border:0.5px solid var(--b2);border-radius:5px;padding:7px 8px;color:var(--te);font-family:var(--fb);font-size:18px;line-height:1;outline:none;-moz-appearance:textfield;box-sizing:border-box}
 .ainum:focus{border-color:var(--ac)}
 .ainum::-webkit-inner-spin-button,.ainum::-webkit-outer-spin-button{-webkit-appearance:none}
 .ag2{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:4px}
@@ -383,7 +383,6 @@ html,body{height:100dvh;overflow:hidden;background:var(--bg);color:var(--te);fon
       </div>
       <!-- 目標カード（日付の直下・固定） -->
       <div class="goal-card" id="goal-card" onclick="startGoalEdit()" style="margin-top:6px">
-        <div class="goal-edit-hint">タップで編集</div>
         <div class="goal-text" id="goal-display"></div>
       </div>
     </div>
@@ -463,7 +462,8 @@ html,body{height:100dvh;overflow:hidden;background:var(--bg);color:var(--te);fon
       <button class="ex-nb" id="sess-next" onclick="goSEx(1)">›</button>
       <div class="ex-cnt" id="sess-ex-cnt">1/1</div>
     </div>
-    <div id="rm-target-area"></div>
+    <div id="rm-target-area" style="flex-shrink:0"></div>
+    <div id="sess-ex-area" style="flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column"></div>
     <div class="rest-row">
       <div style="flex:1">
         <div class="rest-blk">
@@ -482,12 +482,11 @@ html,body{height:100dvh;overflow:hidden;background:var(--bg);color:var(--te);fon
           </div>
         </div>
       </div>
-      <div style="display:flex;gap:0;align-items:stretch;margin-left:12px">
+      <div style="display:flex;gap:6px;align-items:stretch">
         <button class="ex-act-btn" onclick="delSessEx()" style="background:var(--bg3);border:0.5px solid var(--b2);color:rgba(232,89,60,0.7)">✕ 種目削除</button>
         <button class="ex-act-btn addexq" onclick="openQae()"><span style="font-size:15px;line-height:1">＋</span>種目追加</button>
       </div>
     </div>
-    <div id="sess-ex-area"></div>
   </div>
 </div>
 
@@ -495,6 +494,7 @@ html,body{height:100dvh;overflow:hidden;background:var(--bg);color:var(--te);fon
 <div class="sc" id="sc-stats">
   <div class="stats-wrap">
     <div class="period-tabs" id="stats-ptabs"></div>
+    <div id="stats-month-nav"></div>
     <div class="big-vol">
       <div class="bv-l" id="st-vl">総ボリューム</div>
       <div><span class="bv-n" id="st-vn">0</span><span style="font-size:13px;color:var(--t3);margin-left:3px">kg</span></div>
@@ -503,17 +503,22 @@ html,body{height:100dvh;overflow:hidden;background:var(--bg);color:var(--te);fon
     <div class="stat-cards">
       <div class="sc2"><div class="sc2-n" id="st-sn">0</div><div class="sc2-l" id="st-sl">Sessions</div></div>
       <div class="sc2"><div class="sc2-n" id="st-setn">0</div><div class="sc2-l" id="st-setl">Total Sets</div></div>
-      <div class="sc2"><div class="sc2-n" style="color:var(--go)" id="st-strn">0</div><div class="sc2-l" id="st-strl">Day Streak</div></div>
+      <div class="sc2"><div class="sc2-n" style="color:var(--go)" id="st-strn">0</div><div class="sc2-l" id="st-strl">連続日数</div></div>
       <div class="sc2"><div class="sc2-n" style="color:var(--bl)" id="st-timen">0</div><div class="sc2-l">時間 min</div></div>
       <div class="sc2"><div class="sc2-n" style="color:var(--bl)" id="st-prn">—</div><div class="sc2-l" id="st-prl">Best PR</div><div class="sc2-sub" id="st-prex"></div></div>
     </div>
-    <div class="sec-lbl" id="st-cal-l">今週</div>
-    <div class="cal-strip" id="stats-cal"></div>
     <div class="sec-lbl" id="st-mv-l">部位別ボリューム</div>
     <div id="mv-bars"></div>
     <div id="cumulative-chart" style="display:none;margin-bottom:8px"></div>
     <div class="sec-lbl" id="st-ex-l" style="margin-top:8px">種目別統計</div>
     <div id="ex-stats-list"></div>
+    <div style="margin-top:12px;padding-top:10px;border-top:0.5px solid var(--b)">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+        <div class="sec-lbl" style="margin:0">最大挙上重量</div>
+        <button onclick="showPRShareView()" style="padding:5px 10px;background:var(--bld);border:0.5px solid rgba(59,139,212,.4);border-radius:7px;font-size:13px;color:var(--bl);cursor:pointer">📸 シェア</button>
+      </div>
+      <div id="pr-list"></div>
+    </div>
   </div>
 </div>
 
@@ -608,12 +613,17 @@ html,body{height:100dvh;overflow:hidden;background:var(--bg);color:var(--te);fon
           <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px" id="db-int-btns"></div>
         </div>
       </div>
+      <!-- 行4.5: フリー/マシン -->
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">
+        <div class="arl" style="margin-bottom:0;min-width:fit-content">タイプ</div>
+        <div id="db-machine-btns" style="display:flex;gap:3px"></div>
+      </div>
       <!-- 通常種目: セット・回数・重量・休憩 → 4列 -->
       <div id="db-normal-fields">
         <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:4px">
           <div><div class="arl" id="db-sl">SET</div><input type="number" class="ainum" id="db-sets" value="3" min="1" inputmode="numeric"></div>
           <div><div class="arl" id="db-rl">REP</div><input type="text" class="ainp" id="db-reps" placeholder="10"></div>
-          <div><div class="arl" id="db-wl">重量</div><div style="position:relative"><input type="number" class="ainum" id="db-wt" placeholder="60" min="0" step="0.5" inputmode="decimal" style="padding-right:16px"><span id="db-wu" style="position:absolute;right:3px;top:50%;transform:translateY(-50%);font-size:10px;color:var(--t3);pointer-events:none">kg</span></div></div>
+          <div><div class="arl" id="db-wl">重量</div><input type="number" class="ainum" id="db-wt" placeholder="60" min="0" step="0.5" inputmode="decimal" style="padding-right:22px"><span id="db-wu" style="position:absolute;margin-left:-20px;margin-top:8px;font-size:10px;color:var(--t3);pointer-events:none">kg</span></div>
           <div><div class="arl" id="db-rsl">REST</div><input type="number" class="ainum" id="db-rest" value="90" min="15" inputmode="numeric"></div>
         </div>
       </div>
@@ -873,21 +883,21 @@ function setUnit(u){settings.unit=u;S.set('settings',settings);document.getEleme
 
 /* ═══ MASTER DB ═══ */
 const DEF_MASTER=[
-  {id:'m1',n:'ベンチプレス',m:'Chest',sets:4,reps:'6–8',weight:80,restSec:120,i:'high',equip:'barbell'},
-  {id:'m2',n:'インクラインDB',m:'Chest',sets:3,reps:'10–12',weight:28,restSec:90,i:'med',equip:'dumbbell'},
-  {id:'m3',n:'ペックフライ',m:'Chest',sets:3,reps:'15',weight:50,restSec:60,i:'med',equip:'none'},
-  {id:'m4',n:'デッドリフト',m:'Back',sets:3,reps:'5',weight:120,restSec:180,i:'high',equip:'barbell'},
-  {id:'m5',n:'バーベルロウ',m:'Back',sets:4,reps:'8',weight:80,restSec:120,i:'high',equip:'barbell'},
-  {id:'m6',n:'加重懸垂',m:'Back',sets:4,reps:'6–8',weight:10,restSec:120,i:'high',equip:'none'},
-  {id:'m7',n:'ラットPD',m:'Back',sets:3,reps:'10–12',weight:55,restSec:90,i:'med',equip:'none'},
-  {id:'m8',n:'スクワット',m:'Legs',sets:4,reps:'6–8',weight:100,restSec:150,i:'high',equip:'barbell'},
-  {id:'m9',n:'ルーマニアンDL',m:'Legs',sets:4,reps:'10',weight:90,restSec:120,i:'high',equip:'barbell'},
-  {id:'m10',n:'レッグプレス',m:'Legs',sets:3,reps:'15',weight:120,restSec:90,i:'med',equip:'none'},
-  {id:'m11',n:'OHP',m:'Shoulder',sets:3,reps:'8–10',weight:50,restSec:120,i:'high',equip:'barbell'},
-  {id:'m12',n:'サイドレイズ',m:'Shoulder',sets:4,reps:'15',weight:12,restSec:60,i:'med',equip:'dumbbell'},
-  {id:'m13',n:'バイセプカール',m:'Arms',sets:3,reps:'12',weight:14,restSec:60,i:'med',equip:'dumbbell'},
-  {id:'m14',n:'ハンマーカール',m:'Arms',sets:3,reps:'12',weight:18,restSec:60,i:'med',equip:'dumbbell'},
-  {id:'m15',n:'プランク',m:'Core',sets:3,reps:'60sec',weight:0,restSec:60,i:'med',equip:'none'},
+  {id:'m1',n:'ベンチプレス',m:'Chest',sets:4,reps:'6–8',weight:80,restSec:120,i:'high',equip:'barbell',machine:false},
+  {id:'m2',n:'インクラインDB',m:'Chest',sets:3,reps:'10–12',weight:28,restSec:90,i:'med',equip:'dumbbell',machine:false},
+  {id:'m3',n:'ペックフライ',m:'Chest',sets:3,reps:'15',weight:50,restSec:60,i:'med',equip:'none',machine:true},
+  {id:'m4',n:'デッドリフト',m:'Back',sets:3,reps:'5',weight:120,restSec:180,i:'high',equip:'barbell',machine:false},
+  {id:'m5',n:'バーベルロウ',m:'Back',sets:4,reps:'8',weight:80,restSec:120,i:'high',equip:'barbell',machine:false},
+  {id:'m6',n:'加重懸垂',m:'Back',sets:4,reps:'6–8',weight:10,restSec:120,i:'high',equip:'none',machine:false},
+  {id:'m7',n:'ラットPD',m:'Back',sets:3,reps:'10–12',weight:55,restSec:90,i:'med',equip:'none',machine:true},
+  {id:'m8',n:'スクワット',m:'Legs',sets:4,reps:'6–8',weight:100,restSec:150,i:'high',equip:'barbell',machine:false},
+  {id:'m9',n:'ルーマニアンDL',m:'Legs',sets:4,reps:'10',weight:90,restSec:120,i:'high',equip:'barbell',machine:false},
+  {id:'m10',n:'レッグプレス',m:'Legs',sets:3,reps:'15',weight:120,restSec:90,i:'med',equip:'none',machine:true},
+  {id:'m11',n:'OHP',m:'Shoulder',sets:3,reps:'8–10',weight:50,restSec:120,i:'high',equip:'barbell',machine:false},
+  {id:'m12',n:'サイドレイズ',m:'Shoulder',sets:4,reps:'15',weight:12,restSec:60,i:'med',equip:'dumbbell',machine:false},
+  {id:'m13',n:'バイセプカール',m:'Arms',sets:3,reps:'12',weight:14,restSec:60,i:'med',equip:'dumbbell',machine:false},
+  {id:'m14',n:'ハンマーカール',m:'Arms',sets:3,reps:'12',weight:18,restSec:60,i:'med',equip:'dumbbell',machine:false},
+  {id:'m15',n:'プランク',m:'Core',sets:3,reps:'60sec',weight:0,restSec:60,i:'med',equip:'none',machine:false},
 ];
 let masterDB=S.get('masterDB')||JSON.parse(JSON.stringify(DEF_MASTER));
 // マイグレーション：equipフィールドがない種目にDEF_MASTERの値を補完
@@ -895,6 +905,10 @@ masterDB.forEach(ex=>{
   if(ex.equip===undefined){
     const def=DEF_MASTER.find(d=>d.id===ex.id);
     ex.equip=def?def.equip:'none';
+  }
+  if(ex.machine===undefined){
+    const def=DEF_MASTER.find(d=>d.id===ex.id);
+    ex.machine=def?def.machine:false;
   }
 });
 const saveMDB=()=>S.set('masterDB',masterDB);
@@ -926,6 +940,7 @@ let elapsedI=null;
 
 /* ═══ UI STATE ═══ */
 let statsP='week';
+let statsMonthOffset=0;
 let calY=new Date().getFullYear(),calM=new Date().getMonth(),calSel=null;
 let dbF='',dbMusSel='',dbInt='med';
 let espF='',qaeF='';
@@ -1042,7 +1057,9 @@ function renderTodayWorkout(todayRecs,el,expanded){
       const bAdd=eqp==='barbell'?(settings.barbell||20)+(settings.collarBarbell??0.5)*2:eqp==='ezbar'?(settings.ezbar||10)+(settings.collarEzbar??0.5)*2:eqp==='dumbbell'?((settings.dumbbell??2))+(settings.collarDumbbell??0):0;
       const maxKg=sets.length?Math.max(...sets.map(s=>s.kg||0)):0;
       const topSet=sets.find(s=>s.kg===maxKg);
-      const rm=maxKg>0&&topSet?Math.round(maxKg*(1+parseInt(topSet.reps||1)/30)):0;
+      const exM=masterDB.find(e=>e.n===ex.n);
+      const mc=exM?.machine?0.9:1.0;
+      const rm=maxKg>0&&topSet?Math.round(maxKg*(1+parseInt(topSet.reps||1)/30)*mc):0;
       const setTags=sets.map(s=>{
         const tot=bAdd>0?`${((s.kg||0)+bAdd).toFixed(1).replace(/\.0$/,'')}kg`:`${s.kg||0}kg`;
         return`<span style="font-size:12px;color:var(--t2);background:var(--bg3);border:0.5px solid var(--b);border-radius:3px;padding:0 4px;white-space:nowrap">${tot}×${s.reps}</span>`;
@@ -1078,8 +1095,6 @@ function renderGoalCard(){
 function startGoalEdit(){
   const card=document.getElementById('goal-card');
   if(!card)return;
-  const hint=card.querySelector('.goal-edit-hint');
-  if(hint)hint.style.display='none';
   const disp=document.getElementById('goal-display');
   if(disp)disp.style.display='none';
   // すでに入力中なら何もしない
@@ -1101,7 +1116,6 @@ function saveGoalEdit(val){
   const card=document.getElementById('goal-card');
   if(card){
     const ta=card.querySelector('.goal-input');if(ta)ta.remove();
-    const hint=card.querySelector('.goal-edit-hint');if(hint)hint.style.display='';
     const disp=document.getElementById('goal-display');if(disp)disp.style.display='';
   }
   renderGoalCard();
@@ -1185,6 +1199,14 @@ function renderSessEx(){
   const ex=session.exs[session.idx];const total=session.exs.length;
   document.getElementById('sess-ex-nm').textContent=ex.n;
   document.getElementById('sess-ex-cnt').textContent=(session.idx+1)+'/'+total;
+  // 種目名フォント縮小（はみ出し防止）
+  requestAnimationFrame(()=>{
+    const el=document.getElementById('sess-ex-nm');
+    if(!el)return;
+    let fs=30;
+    el.style.fontSize=fs+'px';
+    while(el.scrollWidth>el.clientWidth&&fs>12){fs--;el.style.fontSize=fs+'px';}
+  });
   document.getElementById('sess-prev').disabled=session.idx===0;
   document.getElementById('sess-next').disabled=session.idx===total-1;
   restSec=ex.restSec||settings.defaultRest||90;document.getElementById('sess-rv').textContent=restSec+'s';
@@ -1194,7 +1216,7 @@ function renderSessEx(){
   document.getElementById('sess-ex-area').innerHTML=`
     <div class="excard">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:7px;gap:4px">
-        <div class="ex-name-big" style="font-size:14px;text-align:left;flex:1">${ex.n}</div>
+        <div class="ex-name-big" style="font-size:clamp(11px,3vw,15px);text-align:left;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${ex.n}</div>
         <span style="font-size:13px;color:var(--t3)">${ex.sets.length} sets</span>
       </div>
       <div id="sess-prev-rec" style="margin-top:4px"></div>
@@ -1226,54 +1248,81 @@ function renderSessEx(){
         const assistStr=parseInt(s.assist||0)>0?` -${s.assist}A`:'';
         return`<span style="background:var(--bg3);border:0.5px solid var(--b);border-radius:4px;padding:1px 5px;font-size:13px;color:var(--t2);white-space:nowrap">${tot}×${s.reps}${cheatStr}${assistStr}</span>`;
       }).join('');
+
+      // 推定1RM：全記録の最高値ベース
+      const exMaster=masterDB.find(e=>e.n===exName);
+      const mc=exMaster?.machine?0.9:1.0;
+      let bestRmVal=0;
+      for(const r of prevRecs){
+        const found=r.exercises.find(e=>e.n===exName);
+        if(!found)continue;
+        const eq=found.equip||'none';
+        const bA=eq==='barbell'?(settings.barbell||20)+(settings.collarBarbell??settings.collar??0.5)*2:eq==='ezbar'?(settings.ezbar||10)+(settings.collarEzbar??settings.collar??0.5)*2:eq==='dumbbell'?((settings.dumbbell??2))+(settings.collarDumbbell??settings.collar??0):0;
+        found.sets.filter(s=>parseInt(s.reps||0)>0).forEach(s=>{
+          const tot=(s.kg||0)+(bA>0?bA:0);
+          const rp=parseInt(s.reps||1);
+          const rm=Math.round(tot*(1+rp/30)*mc);
+          if(rm>bestRmVal)bestRmVal=rm;
+        });
+      }
+
+      // 参考値：直前記録ベース
       const prevExEquip=(prevEx.equip)||"none";
       const prevBarAdd=prevExEquip==="barbell"?(settings.barbell||20)+(settings.collarBarbell??settings.collar??0.5)*2:prevExEquip==="ezbar"?(settings.ezbar||10)+(settings.collarEzbar??settings.collar??0.5)*2:prevExEquip==="dumbbell"?((settings.dumbbell??2))+(settings.collarDumbbell??settings.collar??0):0;
       const maxKgPlate=Math.max(...prevEx.sets.map(s=>s.kg||0));
       const maxKgTotal=maxKgPlate+(prevBarAdd>0?prevBarAdd:0);
       const topReps=parseInt(prevEx.sets.find(s=>s.kg===maxKgPlate)?.reps||1);
-      const rmVal=maxKgTotal>0?Math.round(maxKgTotal*(1+topReps/30)):0;
-      const rec80=rmVal>0?Math.round(rmVal*0.8*2)/2:0; // 筋肥大 80%
-      const rec85=rmVal>0?Math.round(rmVal*0.85*2)/2:0; // 筋力 85%
-      const rm=rmVal>0?`<span style="font-size:12px;color:var(--go);margin-left:6px">1RM≈${rmVal}kg</span>`:'';
+      const refRmVal=maxKgTotal>0?Math.round(maxKgTotal*(1+topReps/30)*mc):0;
+      const rec80=refRmVal>0?Math.round(refRmVal*0.8*2)/2:0;
+      const rec85=refRmVal>0?Math.round(refRmVal*0.85*2)/2:0;
+
       const showPlateTarget=exEquip==='barbell'||exEquip==='ezbar';
       const targetBar=Number(settings.barbell??20)||20;
       const targetCollar=(Number(settings.collar??0.5)||0.5)*2;
       const rec80Plate=Math.max(0,rec80-targetBar-targetCollar);
       const rec85Plate=Math.max(0,rec85-targetBar-targetCollar);
-	      const suggest=rmVal>0?`<div style="margin-top:0">
-	        <div style="font-size:11px;color:var(--t3);margin-bottom:5px;letter-spacing:.8px">TODAY'S TARGET</div>
-	        <div style="display:flex;gap:6px">
-	          <div style="flex:1;background:var(--bld);border:0.5px solid rgba(59,139,212,.4);border-radius:8px;padding:8px;text-align:center">
-	            <div style="font-size:11px;color:var(--bl);margin-bottom:2px">筋肥大 (80%)</div>
-	            <div style="font-size:11px;color:var(--t3);margin-top:1px;display:flex;align-items:baseline;gap:4px">
-	              <span style="display:inline-block;width:5.5em;text-align:right;flex-shrink:0">総重量</span>
-	              <span style="font-family:var(--fd);font-size:20px;color:var(--bl);line-height:1">${fmtW(rec80)}</span>
-	            </div>
-	            ${showPlateTarget?`<div style="font-size:11px;color:var(--t3);margin-top:1px;display:flex;align-items:baseline;gap:4px">
-	              <span style="display:inline-block;width:5.5em;text-align:right;flex-shrink:0">プレートのみ</span>
-	              <span style="font-family:var(--fd);font-size:20px;color:var(--bl);line-height:1">${fmtW(rec80Plate)}</span>
-	            </div>`:""}
-	            <div style="font-size:11px;color:var(--t3);margin-top:1px">× 10 rep</div>
-	          </div>
-	          <div style="flex:1;background:var(--acd);border:0.5px solid rgba(232,89,60,.4);border-radius:8px;padding:8px;text-align:center">
-	            <div style="font-size:11px;color:var(--ac);margin-bottom:2px">筋力UP (85%)</div>
-	            <div style="font-size:11px;color:var(--t3);margin-top:1px;display:flex;align-items:baseline;gap:4px">
-	              <span style="display:inline-block;width:5.5em;text-align:right;flex-shrink:0">総重量</span>
-	              <span style="font-family:var(--fd);font-size:20px;color:var(--ac);line-height:1">${fmtW(rec85)}</span>
-	            </div>
-	            ${showPlateTarget?`<div style="font-size:11px;color:var(--t3);margin-top:1px;display:flex;align-items:baseline;gap:4px">
-	              <span style="display:inline-block;width:5.5em;text-align:right;flex-shrink:0">プレートのみ</span>
-	              <span style="font-family:var(--fd);font-size:20px;color:var(--ac);line-height:1">${fmtW(rec85Plate)}</span>
-	            </div>`:""}
-	            <div style="font-size:11px;color:var(--t3);margin-top:1px">× 6 rep</div>
-	          </div>
-	        </div>
-	      </div>`:'';
-	      if(rmEl)rmEl.innerHTML=suggest;
-	      prevEl.innerHTML=`<div style="background:var(--bg2);border:0.5px solid var(--b);border-radius:8px;padding:7px 10px">
-	        <div style="font-size:11px;color:var(--t3);letter-spacing:.8px;text-transform:uppercase;margin-bottom:5px">前回 ${dStr}${rm}</div>
-	        <div style="display:flex;flex-wrap:wrap;gap:3px">${setRows}</div>
-	      </div>`;
+
+      // 推定1RMバッジ（全記録最高値）
+      const rmBadge=bestRmVal>0?`<span style="font-size:11px;color:var(--t3);margin-left:5px">推定1RM <span style="font-family:var(--fd);font-size:13px;color:var(--go)">${bestRmVal}kg</span></span>`:'';
+
+      // TODAY'S TARGET（直前記録ベース・参考値）
+      const suggest=refRmVal>0?`<div style="margin-top:0">
+        <div style="font-size:10px;color:var(--t3);margin-bottom:4px;letter-spacing:.8px">TODAY'S TARGET <span style="font-size:9px;opacity:.6">前回記録より算出・参考値</span></div>
+        <div style="display:flex;gap:4px">
+          <div style="flex:1;background:var(--bld);border:0.5px solid rgba(59,139,212,.4);border-radius:8px;padding:6px 8px">
+            <div style="font-size:10px;color:var(--bl);margin-bottom:3px">筋肥大 (80%)</div>
+            <div style="display:flex;align-items:center;gap:6px">
+              <div style="display:grid;grid-template-columns:4em 1fr;align-items:baseline;gap:2px;row-gap:1px;flex:1">
+                <span style="font-size:10px;color:var(--t3)">総重量</span>
+                <span style="font-family:var(--fd);font-size:20px;color:var(--bl);line-height:1">${fmtW(rec80)}</span>
+                ${showPlateTarget?`<span style="font-size:10px;color:var(--t3)">プレート</span><span style="font-family:var(--fd);font-size:20px;color:var(--bl);line-height:1">${fmtW(rec80Plate)}</span>`:'<span></span><span></span>'}
+              </div>
+              <div style="font-family:var(--fd);font-size:22px;color:var(--bl);line-height:1;flex-shrink:0">×10</div>
+            </div>
+          </div>
+          <div style="flex:1;background:var(--acd);border:0.5px solid rgba(232,89,60,.4);border-radius:8px;padding:6px 8px">
+            <div style="font-size:10px;color:var(--ac);margin-bottom:3px">筋力UP (85%)</div>
+            <div style="display:flex;align-items:center;gap:6px">
+              <div style="display:grid;grid-template-columns:4em 1fr;align-items:baseline;gap:2px;row-gap:1px;flex:1">
+                <span style="font-size:10px;color:var(--t3)">総重量</span>
+                <span style="font-family:var(--fd);font-size:20px;color:var(--ac);line-height:1">${fmtW(rec85)}</span>
+                ${showPlateTarget?`<span style="font-size:10px;color:var(--t3)">プレート</span><span style="font-family:var(--fd);font-size:20px;color:var(--ac);line-height:1">${fmtW(rec85Plate)}</span>`:'<span></span><span></span>'}
+              </div>
+              <div style="font-family:var(--fd);font-size:22px;color:var(--ac);line-height:1;flex-shrink:0">×6</div>
+            </div>
+          </div>
+          ${bestRmVal>0?`<div style="background:var(--bg3);border:0.5px solid rgba(242,166,35,.5);border-radius:8px;padding:6px 8px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex:0 0 20%;min-width:0">
+            <div style="font-size:9px;color:var(--t3);margin-bottom:2px;letter-spacing:.5px">推定1RM</div>
+            <div style="font-family:var(--fd);font-size:20px;color:#F2A623;line-height:1">${bestRmVal}</div>
+            <div style="font-size:9px;color:var(--t3);margin-top:1px">kg</div>
+          </div>`:''}
+        </div>
+      </div>`:'';
+      if(rmEl)rmEl.innerHTML=suggest;
+      prevEl.innerHTML=`<div style="background:var(--bg2);border:0.5px solid var(--b);border-radius:8px;padding:7px 10px">
+        <div style="font-size:11px;color:var(--t3);letter-spacing:.8px;text-transform:uppercase;margin-bottom:5px">前回 ${dStr}</div>
+        <div style="display:flex;flex-wrap:wrap;gap:3px">${setRows}</div>
+      </div>`;
     } else {
       prevEl.innerHTML=`<div style="text-align:center;padding:7px;font-size:13px;color:var(--t3);background:var(--bg2);border:0.5px solid var(--b);border-radius:8px">前回記録なし</div>`;
     }
@@ -1288,13 +1337,14 @@ function refreshSetRows(){
   document.getElementById('setrows').innerHTML=ex.sets.map((s,i)=>{
     const plate=s.kg?toDisp(s.kg):0;
     const total=bAdd>0?(+plate+bAdd).toFixed(1).replace(/\.0$/,''):'';
-    const posNeg=s.posNeg||'';
     return`
     <div class="srow3 set-data-row" data-idx="${i}">
-      <div class="sn">${i+1}</div>
+      <div style="display:flex;align-items:center;justify-content:center">
+        <div class="sn">${i+1}</div>
+      </div>
       <input type="number" class="si si-kg" value="${s.kg?toDisp(s.kg):''}" placeholder="—" step="0.5" inputmode="decimal"
         oninput="updateSet(${i},'kg',toKg(parseFloat(this.value)||0))" onfocus="this.select()">
-      <div style="text-align:center;font-size:11px;font-weight:700;color:${bAdd>0&&total?'var(--bl)':'var(--b2)'};line-height:1.1">${bAdd>0&&total?`<span style='font-size:9px;color:var(--t3)'>→</span><br><span>${total}</span>`:'—'}</div>
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:${bAdd>0&&total?'var(--bl)':'var(--b2)'};line-height:1.2;text-align:center">${bAdd>0&&total?`<span>${total}</span>`:'—'}</div>
       <input type="number" class="si si-rp" value="${s.reps||''}" placeholder="—" min="1" inputmode="numeric"
         oninput="updateSet(${i},'reps',this.value)" onfocus="this.select()">
       <input type="number" class="si" value="${s.cheat||''}" placeholder="0" min="0" inputmode="numeric"
@@ -1303,13 +1353,9 @@ function refreshSetRows(){
         oninput="updateSet(${i},'assist',this.value?parseInt(this.value):0)" onfocus="this.select()">
       <button class="sdel" onclick="delSessSet(${i})" ${canDel?'':'disabled'} style="color:${canDel?'rgba(232,89,60,0.55)':'var(--b2)'};cursor:${canDel?'pointer':'default'}">✕</button>
     </div>
-    <div class="srow3-note" style="display:flex;gap:4px;align-items:center;padding:0 2px 3px">
-      <div style="display:flex;gap:3px;flex-shrink:0">
-        <div data-pn="pos" onclick="setPosNeg(${i},'pos')" style="padding:5px 10px;border-radius:6px;font-size:13px;cursor:pointer;border:0.5px solid ${posNeg==='pos'?'rgba(76,175,80,.6)':'var(--b2)'};background:${posNeg==='pos'?'var(--grd)':'var(--bg4)'};color:${posNeg==='pos'?'var(--gr)':'var(--t3)'}">ポジ</div>
-        <div data-pn="neg" onclick="setPosNeg(${i},'neg')" style="padding:5px 10px;border-radius:6px;font-size:13px;cursor:pointer;border:0.5px solid ${posNeg==='neg'?'rgba(59,139,212,.6)':'var(--b2)'};background:${posNeg==='neg'?'var(--bld)':'var(--bg4)'};color:${posNeg==='neg'?'var(--bl)':'var(--t3)'}">ネガ</div>
-      </div>
+    <div class="srow3-note" style="padding:0 0 4px 27px">
       <input type="text" class="sinote" value="${s.note||''}" placeholder="メモ"
-        oninput="updateSet(${i},'note',this.value)" style="flex:1">
+        oninput="updateSet(${i},'note',this.value)" style="width:100%">
     </div>`;
   }).join('');
 }
@@ -1318,21 +1364,19 @@ function setPosNeg(i,val){
   const cur=session.exs[session.idx].sets[i].posNeg||'';
   session.exs[session.idx].sets[i].posNeg=(cur===val?'':val);
   // ポジ/ネガボタンの色だけ更新
-  const noteRows=document.querySelectorAll('#setrows .srow3-note');
-  if(noteRows[i]){
-    const btns=noteRows[i].querySelectorAll('[data-pn]');
+  const dataRows=document.querySelectorAll('#setrows .set-data-row');
+  if(dataRows[i]){
+    const btns=dataRows[i].querySelectorAll('[data-pn]');
     const posNeg=session.exs[session.idx].sets[i].posNeg;
     if(btns[0]){
       btns[0].style.border=`0.5px solid ${posNeg==='pos'?'rgba(76,175,80,.6)':'var(--b2)'}`;
       btns[0].style.background=posNeg==='pos'?'var(--grd)':'var(--bg4)';
       btns[0].style.color=posNeg==='pos'?'var(--gr)':'var(--t3)';
-      btns[0].style.padding='5px 10px';
     }
     if(btns[1]){
       btns[1].style.border=`0.5px solid ${posNeg==='neg'?'rgba(59,139,212,.6)':'var(--b2)'}`;
       btns[1].style.background=posNeg==='neg'?'var(--bld)':'var(--bg4)';
       btns[1].style.color=posNeg==='neg'?'var(--bl)':'var(--t3)';
-      btns[1].style.padding='5px 10px';
     }
   }
 }
@@ -1349,13 +1393,28 @@ function updateSet(i,key,val){
       const plate=val?toDisp(val):0;
       const total=bAdd>0?(+plate+bAdd).toFixed(1).replace(/\.0$/,''):'';
       const totEl=rows[i].children[2];
-      if(totEl)totEl.innerHTML=bAdd>0&&total?`<span style='font-size:9px;color:var(--t3)'>→</span><br><span>${total}</span>`:'—';
+      if(totEl)totEl.innerHTML=bAdd>0&&total?`<span>${total}</span>`:'—';
     }
   }
 }
 
 function goSEx(dir){if(!session)return;session.idx=Math.max(0,Math.min(session.exs.length-1,session.idx+dir));renderSession()}
 function goSExTo(i){if(!session)return;session.idx=i;renderSession()}
+(function initSwipe(){
+  let tx=0,ty=0;
+  document.addEventListener('touchstart',e=>{
+    const el=e.target.closest('#sess-ex-area');
+    if(!el)return;
+    tx=e.touches[0].clientX;ty=e.touches[0].clientY;
+  },{passive:true});
+  document.addEventListener('touchend',e=>{
+    const el=e.target.closest('#sess-ex-area');
+    if(!el||!session)return;
+    const dx=e.changedTouches[0].clientX-tx;
+    const dy=e.changedTouches[0].clientY-ty;
+    if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.5)goSEx(dx<0?1:-1);
+  },{passive:true});
+})();
 function performSessExDelete(){
   if(!session)return;
   session.exs.splice(session.idx,1);
@@ -1381,9 +1440,6 @@ function addSessSet(){
   // kg（重量）のみコピー、回数はコピーしない
   ex.sets.push({kg:last.kg,reps:'',cheat:0,assist:0,posNeg:'',note:'',done:false});
   refreshSetRows();
-  // 追加した行のKG入力欄にフォーカス
-  const rows=document.querySelectorAll('#setrows .si-kg');
-  if(rows.length)rows[rows.length-1].focus();
 }
 function delSessSet(i){
   if(!session)return;
@@ -1487,11 +1543,13 @@ function getAudioCtx(){
   if(_audioCtx.state==="suspended")_audioCtx.resume();
   return _audioCtx;
 }
-let inlineTimerI=null,inlineTimerCur=0,inlineTimerTot=0,inlineTimerRunning=false;
+let inlineTimerI=null,inlineTimerCur=0,inlineTimerTot=0,inlineTimerRunning=false,inlineTimerEnd=0;
 function toggleInlineTimer(){
   if(inlineTimerRunning||inlineTimerCur>0){stopInlineTimer();return;}
   try{getAudioCtx();}catch(e){}
+  if(Notification&&Notification.permission==='default')Notification.requestPermission();
   inlineTimerCur=restSec;inlineTimerTot=restSec;inlineTimerRunning=true;
+  inlineTimerEnd=Date.now()+restSec*1000;
   const bar=document.getElementById('rest-timer-bar');
   const info=document.getElementById('rest-timer-info');
   const btn=document.getElementById('rest-go-btn');
@@ -1503,7 +1561,7 @@ function toggleInlineTimer(){
   startInlineTI();
 }
 function stopInlineTimer(){
-  clearInterval(inlineTimerI);inlineTimerRunning=false;inlineTimerCur=0;
+  clearInterval(inlineTimerI);inlineTimerRunning=false;inlineTimerCur=0;inlineTimerEnd=0;
   const bar=document.getElementById('rest-timer-bar');
   const info=document.getElementById('rest-timer-info');
   const btn=document.getElementById('rest-go-btn');
@@ -1516,8 +1574,10 @@ function openTimer(){toggleInlineTimer();}
 function toggleInlineTimerPause(){
   inlineTimerRunning=!inlineTimerRunning;
   const pb=document.getElementById('rest-timer-pause');
-  if(inlineTimerRunning){if(pb)pb.textContent='⏸';startInlineTI();}
-  else{if(pb)pb.textContent='▶';clearInterval(inlineTimerI);}
+  if(inlineTimerRunning){
+    inlineTimerEnd=Date.now()+inlineTimerCur*1000;
+    if(pb)pb.textContent='⏸';startInlineTI();
+  }else{if(pb)pb.textContent='▶';clearInterval(inlineTimerI);}
 }
 function updateInlineBar(cur,tot){
   const fill=document.getElementById('rest-timer-fill');
@@ -1526,12 +1586,27 @@ function updateInlineBar(cur,tot){
 function startInlineTI(){
   clearInterval(inlineTimerI);
   inlineTimerI=setInterval(()=>{
-    inlineTimerCur--;
+    // 時間補正：実経過時間ベース
+    inlineTimerCur=Math.max(0,Math.round((inlineTimerEnd-Date.now())/1000));
     document.getElementById('rest-timer-cnt').textContent=inlineTimerCur;
     updateInlineBar(inlineTimerCur,inlineTimerTot);
-    if(inlineTimerCur<=0){clearInterval(inlineTimerI);playAlarm();setTimeout(stopInlineTimer,1200);}
-  },1000);
+    if(inlineTimerCur<=0){clearInterval(inlineTimerI);playAlarm();_notifyTimerEnd();setTimeout(stopInlineTimer,1200);}
+  },500);
 }
+function _notifyTimerEnd(){
+  if(Notification&&Notification.permission==='granted'){
+    try{new Notification('LimitBreaker',{body:'レスト終了！次のセットを開始してください',icon:'/limitbreaker/icon-192.png',tag:'rest-end',requireInteraction:false});}catch(e){}
+  }
+}
+// バックグラウンドから復帰時に時間を補正
+document.addEventListener('visibilitychange',()=>{
+  if(document.visibilityState==='visible'&&inlineTimerRunning&&inlineTimerEnd>0){
+    inlineTimerCur=Math.max(0,Math.round((inlineTimerEnd-Date.now())/1000));
+    document.getElementById('rest-timer-cnt').textContent=inlineTimerCur;
+    updateInlineBar(inlineTimerCur,inlineTimerTot);
+    if(inlineTimerCur<=0){clearInterval(inlineTimerI);playAlarm();_notifyTimerEnd();setTimeout(stopInlineTimer,1200);}
+  }
+});
 function setTimerSound(id){settings.timerSound=id;S.set('settings',settings);renderSettings();}
 
 function playAlarm(){
@@ -1600,10 +1675,22 @@ function renderStats(){
   document.getElementById('stats-ptabs').innerHTML=periods.map((p,i)=>`<div class="pt ${pkeys[i]===statsP?'on':''}" onclick="setStatsP('${pkeys[i]}')">${p}</div>`).join('');
   const now=new Date();
   let filtered=records;
-  if(statsP==='day'){const tk=dateKey(now);filtered=records.filter(r=>dateKey(r.date)===tk)}
-  else if(statsP==='week'){const w=new Date(now);w.setDate(now.getDate()-7);filtered=records.filter(r=>new Date(r.date)>=w)}
-  else if(statsP==='month'){const m=new Date(now.getFullYear(),now.getMonth(),1);filtered=records.filter(r=>new Date(r.date)>=m)}
-  else if(statsP==='year'){const y=new Date(now.getFullYear(),0,1);filtered=records.filter(r=>new Date(r.date)>=y)}
+  // 月ナビゲーション
+  const mnEl=document.getElementById('stats-month-nav');
+  if(statsP==='month'){
+    const targetDate=new Date(now.getFullYear(),now.getMonth()+statsMonthOffset,1);
+    const y=targetDate.getFullYear(),m=targetDate.getMonth();
+    const ms=new Date(y,m,1),me=new Date(y,m+1,0,23,59,59);
+    filtered=records.filter(r=>{const d=new Date(r.date);return d>=ms&&d<=me});
+    const label=`${y}年${m+1}月`;
+    const isCurrentMonth=(y===now.getFullYear()&&m===now.getMonth());
+    if(mnEl)mnEl.innerHTML=`<div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:8px;flex-shrink:0"><button onclick="adjStatsMonth(-1)" style="width:28px;height:28px;background:var(--bg3);border:0.5px solid var(--b2);border-radius:6px;color:var(--t2);font-size:16px;cursor:pointer">‹</button><span style="font-family:var(--fd);font-size:16px;color:var(--te);letter-spacing:1px">${label}</span><button onclick="adjStatsMonth(1)" style="width:28px;height:28px;background:var(--bg3);border:0.5px solid var(--b2);border-radius:6px;color:${isCurrentMonth?'var(--b2)':'var(--t2)'};font-size:16px;cursor:pointer" ${isCurrentMonth?'disabled':''}>›</button></div>`;
+  }else{
+    if(mnEl)mnEl.innerHTML='';
+    if(statsP==='day'){const tk=dateKey(now);filtered=records.filter(r=>dateKey(r.date)===tk)}
+    else if(statsP==='week'){const w=new Date(now);w.setDate(now.getDate()-7);filtered=records.filter(r=>new Date(r.date)>=w)}
+    else if(statsP==='year'){const y=new Date(now.getFullYear(),0,1);filtered=records.filter(r=>new Date(r.date)>=y)}
+  }
   const vol=Math.round(filtered.reduce((a,r)=>a+r.totalVol,0));
   const sets=filtered.reduce((a,r)=>r.exercises.reduce((b,ex)=>b+ex.sets.length,a),0);
   document.getElementById('st-vn').textContent=vol;
@@ -1652,8 +1739,96 @@ function renderStats(){
     <div id="exg-${ei}" style="display:none;background:var(--bg2);border:0.5px solid var(--b);border-radius:9px;padding:8px;margin-bottom:4px"></div>
   `).join(''):`<div style="text-align:center;padding:12px;color:var(--t3);font-size:15px">記録なし</div>`;
   renderCumulativeChart();
+  // PRランキングリスト（全記録から）
+  renderPRList();
 }
-function setStatsP(p){statsP=p;openExGraphs.clear();renderStats()}
+function setStatsP(p){statsP=p;if(p!=='month')statsMonthOffset=0;openExGraphs.clear();renderStats()}
+function adjStatsMonth(d){statsMonthOffset=Math.min(0,statsMonthOffset+d);openExGraphs.clear();renderStats()}
+
+// PRランキング: masterDB順・全記録から最大挙上を集計
+let prSelSet=new Set();
+function renderPRList(){
+  const prEl=document.getElementById('pr-list');if(!prEl)return;
+  // 全記録からexerciseごとに最大kg・そのときのreps集計
+  const prMap={};
+  records.forEach(r=>r.exercises.forEach(ex=>{
+    ex.sets.forEach(s=>{
+      const kg=s.kg||0,rp=parseInt(s.reps||0);
+      if(kg>0){
+        if(!prMap[ex.n]||kg>prMap[ex.n].kg||(kg===prMap[ex.n].kg&&rp>prMap[ex.n].reps)){
+          prMap[ex.n]={kg,reps:rp};
+        }
+      }
+    });
+  }));
+  // masterDB順でフィルタ
+  const prList=masterDB.filter(m=>prMap[m.n]).map(m=>({name:m.n,...prMap[m.n]}));
+  if(!prList.length){prEl.innerHTML=`<div style="text-align:center;padding:10px;font-size:13px;color:var(--t3)">記録なし</div>`;return;}
+  prEl.innerHTML=prList.map(p=>{
+    const sel=prSelSet.has(p.name);
+    return`<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:0.5px solid var(--b)">
+      <div onclick="togglePRSel('${p.name.replace(/'/g,"\\'")}')" style="width:20px;height:20px;border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;cursor:pointer;border:0.5px solid ${sel?'rgba(76,175,80,.6)':'var(--b2)'};background:${sel?'var(--grd)':'var(--bg4)'};font-size:13px">${sel?'✓':''}</div>
+      <div style="flex:1;font-size:14px;color:var(--te)">${p.name}</div>
+      <div style="font-family:var(--fd);font-size:16px;color:var(--ac)">${fmtW(p.kg)}</div>
+      <div style="font-size:12px;color:var(--t3)">×${p.reps||'—'}</div>
+    </div>`;
+  }).join('');
+}
+function togglePRSel(name){
+  if(prSelSet.has(name))prSelSet.delete(name);else prSelSet.add(name);
+  renderPRList();
+}
+function showPRShareView(){
+  const prMap={};
+  records.forEach(r=>r.exercises.forEach(ex=>{
+    ex.sets.forEach(s=>{
+      const kg=s.kg||0,rp=parseInt(s.reps||0);
+      if(kg>0&&(!prMap[ex.n]||kg>prMap[ex.n].kg)){prMap[ex.n]={kg,reps:rp};}
+    });
+  }));
+  const list=masterDB.filter(m=>prMap[m.n]&&(prSelSet.size===0||prSelSet.has(m.n))).map(m=>({name:m.n,...prMap[m.n]}));
+  if(!list.length){alert('記録がありません');return;}
+  const rows=list.map(p=>`<div style="display:flex;align-items:center;padding:5px 0;border-bottom:0.5px solid rgba(255,255,255,.08)">
+    <div style="flex:1;font-size:13px;color:#F0EDE8">${p.name}</div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#E8593C">${fmtW(p.kg)}</div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:rgba(240,237,232,.6);margin-left:6px">×${p.reps||'—'}rep</div>
+  </div>`).join('');
+  const html=`<div id="pr-share-ov" style="position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.92);display:flex;flex-direction:column;padding:16px 16px 0">
+    <div style="flex:1;overflow-y:auto;display:flex;flex-direction:column;align-items:center;padding-bottom:12px">
+      <div id="pr-share-card" style="width:100%;max-width:360px;background:linear-gradient(135deg,#1a0a0a,#0a0a14);border:1px solid rgba(232,89,60,.3);border-radius:16px;padding:14px">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:#E8593C;margin-bottom:4px">⚡ LIMIT BREAKER</div>
+        <div style="font-size:11px;color:rgba(240,237,232,.4);margin-bottom:10px;letter-spacing:1px">PERSONAL RECORDS</div>
+        ${rows}
+        <div style="text-align:center;margin-top:10px;font-size:10px;color:rgba(240,237,232,.2);letter-spacing:2px">#LIMITBREAKER #筋トレ #PR</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;padding:12px 0 20px;width:100%;max-width:360px;margin:0 auto;flex-shrink:0">
+      <button onclick="document.getElementById('pr-share-ov').remove()" style="flex:1;padding:12px;background:var(--bg3);border:0.5px solid var(--b2);border-radius:8px;font-size:15px;color:var(--t2);cursor:pointer">閉じる</button>
+      <button onclick="sharePRCard()" style="flex:2;padding:12px;background:var(--ac);border:none;border-radius:8px;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1px;color:#fff;cursor:pointer">📤 シェア</button>
+    </div>
+  </div>`;
+  document.body.insertAdjacentHTML('beforeend',html);
+}
+function sharePRCard(){
+  const card=document.getElementById('pr-share-card');if(!card)return;
+  const script=document.createElement('script');
+  script.src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+  script.onload=()=>{
+    html2canvas(card,{backgroundColor:'#0a0a0a',scale:2,logging:false,useCORS:true}).then(canvas=>{
+      canvas.toBlob(blob=>{
+        if(!blob)return;
+        const file=new File([blob],'lb-pr.png',{type:'image/png'});
+        if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){
+          navigator.share({files:[file],text:'#LIMITBREAKER #筋トレ #PR'}).catch(()=>{});
+        }else{
+          const url=URL.createObjectURL(blob);const a=document.createElement('a');
+          a.href=url;a.download='lb-pr.png';a.click();URL.revokeObjectURL(url);
+        }
+      },'image/png');
+    });
+  };
+  if(window.html2canvas){script.onload();}else{document.head.appendChild(script);}
+}
 
 // 累計グラフ：表示年管理
 let cumulYear=new Date().getFullYear();
@@ -1812,7 +1987,7 @@ function toggleExGraph(idx){
         ex.sets.forEach(s=>{
           const kg=s.kg||0,rp=parseInt(s.reps||0);
           if(kg>grouped[k].maxKg)grouped[k].maxKg=kg;
-          if(rp>0){const rm=Math.round(kg*(1+rp/30));if(rm>grouped[k].rm)grouped[k].rm=rm;}
+          if(rp>0){const exM=masterDB.find(e=>e.n===ex.n);const mc=exM?.machine?0.9:1.0;const rm=Math.round(kg*(1+rp/30)*mc);if(rm>grouped[k].rm)grouped[k].rm=rm;}
           grouped[k].vol+=(kg)*(rp||1);
         });
         if(ex.sets.length>grouped[k].maxSets)grouped[k].maxSets=ex.sets.length;
@@ -2064,7 +2239,7 @@ function renderHomeCalDet(){
       if(!displaySets.length)return'';
       const maxKg=Math.max(0,...displaySets.map(s=>s.kg||0));
       const topSet=displaySets.find(s=>s.kg===maxKg)||displaySets[0];
-      const rm=maxKg>0?Math.round(maxKg*(1+parseInt(topSet.reps||1)/30)):0;
+      const exM2a=masterDB.find(e=>e.n===ex.n);const mc2a=exM2a?.machine?0.9:1.0;const rm=maxKg>0?Math.round(maxKg*(1+parseInt(topSet.reps||1)/30)*mc2a):0;
       const rows=displaySets.map((s,si)=>{
         const eqp=ex.equip||'none';
         const bAdd=eqp==='barbell'?(settings.barbell||20)+(settings.collarBarbell??0.5)*2:eqp==='ezbar'?(settings.ezbar||10)+(settings.collarEzbar??0.5)*2:eqp==='dumbbell'?((settings.dumbbell??2))+(settings.collarDumbbell??0):0;
@@ -2158,7 +2333,7 @@ function renderCalDet(){
       if(!displaySets.length)return'';
       const maxKg=Math.max(0,...displaySets.map(s=>s.kg||0));
       const topSet=displaySets.find(s=>s.kg===maxKg)||displaySets[0];
-      const rm=maxKg>0?Math.round(maxKg*(1+parseInt(topSet.reps||1)/30)):0;
+      const exM2b=masterDB.find(e=>e.n===ex.n);const mc2b=exM2b?.machine?0.9:1.0;const rm=maxKg>0?Math.round(maxKg*(1+parseInt(topSet.reps||1)/30)*mc2b):0;
       const setTable=`<table style="width:100%;border-collapse:collapse;margin-top:4px">
         <thead><tr style="border-bottom:0.5px solid var(--b2)">
           <th style="font-size:11px;color:var(--t3);font-weight:400;text-align:center;padding:2px 4px">SET</th>
@@ -2233,7 +2408,7 @@ function showShareView(globalIdx){
     if(!valid.length)return'';
     const maxKg=Math.max(0,...valid.map(s=>s.kg||0));
     const topSet=valid.find(s=>s.kg===maxKg)||valid[0];
-    const rm=maxKg>0?Math.round(maxKg*(1+parseInt(topSet.reps||1)/30)):0;
+    const exM2c=masterDB.find(e=>e.n===ex.n);const mc2c=exM2c?.machine?0.9:1.0;const rm=maxKg>0?Math.round(maxKg*(1+parseInt(topSet.reps||1)/30)*mc2c):0;
     const rows=valid.map((s,i)=>{
       const vol=Math.round((s.kg||0)*parseInt(s.reps||0));
       return`<tr style="border-top:0.5px solid rgba(255,255,255,.08)">
@@ -2559,6 +2734,11 @@ function setDBInt(v){dbInt=v;renderDBInt()}
 let dbIsoMode=false;
 let dbEditId=null;
 let dbEquip='none'; // 'barbell'|'ezbar'|'dumbbell'|'none'
+let dbMachine=false;
+function renderDBMachineBtns(){
+  const el=document.getElementById('db-machine-btns');if(!el)return;
+  el.innerHTML=[{v:false,l:'フリー'},{v:true,l:'マシン'}].map(o=>`<div style="padding:5px 12px;text-align:center;border-radius:6px;cursor:pointer;font-size:14px;font-weight:600;border:0.5px solid var(--b2);background:${dbMachine===o.v?'var(--acd)':'var(--bg4)'};color:${dbMachine===o.v?'var(--ac)':'var(--t2)'}" onclick="dbMachine=${o.v};renderDBMachineBtns()">${o.l}</div>`).join('');
+}
 function renderDBEquipBtns(){
   const opts=[{v:'barbell',l:'BB'},{v:'ezbar',l:'EZ'},{v:'dumbbell',l:'DB'},{v:'none',l:'なし'}];
   const el=document.getElementById('db-equip-btns');if(!el)return;
@@ -2581,14 +2761,14 @@ function addDBEx(){
     const secs=parseInt(document.getElementById('db-iso-sec')?.value)||30;
     const holdSec=mins*60+secs;
     const rest=parseInt(document.getElementById('db-iso-rest')?.value)||60;
-    entry={id:dbEditId||'m'+Date.now(),n:name,m:dbMusSel||'—',sets,reps:'キープ',weight:0,restSec:rest,i:dbInt,isometric:true,holdSec,equip:dbEquip};
+    entry={id:dbEditId||'m'+Date.now(),n:name,m:dbMusSel||'—',sets,reps:'キープ',weight:0,restSec:rest,i:dbInt,isometric:true,holdSec,equip:dbEquip,machine:dbMachine};
   } else {
     const sets=parseInt(document.getElementById('db-sets')?.value)||settings.defaultSets||3;
     const reps=(document.getElementById('db-reps')?.value||'10').trim();
     const wDisp=parseFloat(document.getElementById('db-wt')?.value||'0')||0;
     const weight=settings.unit==='lb'?toKg(wDisp):wDisp;
     const rest=parseInt(document.getElementById('db-rest')?.value)||settings.defaultRest||90;
-    entry={id:dbEditId||'m'+Date.now(),n:name,m:dbMusSel||'—',sets,reps,weight,restSec:rest,i:dbInt,isometric:false,equip:dbEquip};
+    entry={id:dbEditId||'m'+Date.now(),n:name,m:dbMusSel||'—',sets,reps,weight,restSec:rest,i:dbInt,isometric:false,equip:dbEquip,machine:dbMachine};
   }
   if(dbEditId){
     const idx=masterDB.findIndex(e=>e.id===dbEditId);
@@ -2608,7 +2788,7 @@ function addDBEx(){
   const ds=document.getElementById('db-sets');if(ds)ds.value=settings.defaultSets||3;
   const dr=document.getElementById('db-rest');if(dr)dr.value=settings.defaultRest||90;
   if(dbIsoMode){toggleIsoMode();}
-  dbMusSel='';dbInt='med';dbEquip='none';renderDBMuscles();renderDBInt();renderDBEquipBtns();renderDBList();
+  dbMusSel='';dbInt='med';dbEquip='none';dbMachine=false;renderDBMuscles();renderDBInt();renderDBEquipBtns();renderDBMachineBtns();renderDBList();
   const btn=document.getElementById('db-ab');if(btn){const o=btn.textContent;btn.textContent='✓';setTimeout(()=>btn.textContent=o,1200)}
 }
 function editDBEx(id){
@@ -2618,6 +2798,7 @@ function editDBEx(id){
   dbMusSel=ex.m;renderDBMuscles();
   dbInt=ex.i||'med';renderDBInt();
   dbEquip=ex.equip||'none';renderDBEquipBtns();
+  dbMachine=ex.machine||false;renderDBMachineBtns();
   document.getElementById('db-add-title').textContent='✏ 種目を編集';
   document.getElementById('db-ab').textContent='更新する';
   document.getElementById('db-edit-cancel').style.display='flex';
@@ -2643,7 +2824,7 @@ function cancelEditDBEx(){
   document.getElementById('db-add-title').textContent='＋ 種目を登録';
   document.getElementById('db-ab').textContent='登録する';
   document.getElementById('db-edit-cancel').style.display='none';
-  dbMusSel='';dbInt='med';dbEquip='none';renderDBMuscles();renderDBInt();renderDBEquipBtns();
+  dbMusSel='';dbInt='med';dbEquip='none';dbMachine=false;renderDBMuscles();renderDBInt();renderDBEquipBtns();renderDBMachineBtns();
 }
 function delDBEx(id){if(!confirm('削除しますか？'))return;masterDB=masterDB.filter(e=>e.id!==id);saveMDB();renderDBList()}
 
@@ -2698,7 +2879,7 @@ function resetAll(){if(!confirm('全データを削除しますか？取り消�
 function reRender(){renderHome();renderSettings();renderDBMuscles();renderDBInt();renderDBFilter();renderDBList();renderHomeCal()}
 
 /* ═══ INIT ═══ */
-renderSettings();renderDBMuscles();renderDBInt();renderDBEquipBtns();renderDBFilter();renderDBList();renderHome();
+renderSettings();renderDBMuscles();renderDBInt();renderDBEquipBtns();renderDBMachineBtns();renderDBFilter();renderDBList();renderHome();
 </script>
 
 </body>
